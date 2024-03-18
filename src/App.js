@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import City from "./components/City";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Pilibangan from "./components/Pilibangan";
+import Transaction from "./components/Transaction";
+import Hanumangarh from "./components/Hanumangarh";
+import Ganganagar from "./components/Ganganagar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <> 
+        <Router>
+            <Navbar></Navbar>
+            <Routes>
+              <Route path="/" element={<Home></Home>}></Route>
+              <Route path="/city" element={<City></City>}></Route>
+              <Route path="/pilibangan" element={<Pilibangan></Pilibangan>}></Route>
+              <Route path="/hanumangarh" element={<Hanumangarh></Hanumangarh>}></Route>
+              <Route path="/ganganagar" element={<Ganganagar></Ganganagar>}></Route>
+              <Route path="/transaction" element={<Transaction></Transaction>}></Route>
+            </Routes>
+        </Router>
+    </>
   );
 }
 
