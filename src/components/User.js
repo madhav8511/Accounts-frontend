@@ -6,8 +6,11 @@ const User = (props)=> {
 
     const deleteUser = async (id) => {
       try {
-        const response = await axios.delete(`http://localhost:8080/user/deleteUser/${id}`);
-        console.log(response.data);
+          if (window.confirm('Are you sure you want to delete the user')){
+            const response = await axios.delete(`http://localhost:8080/user/deleteUser/${id}`);
+            console.log(response.data);
+            window.location.reload();
+          }
         //Please see to reload something.....
       } catch (error) {
         console.error('Error:', error.response.data); 

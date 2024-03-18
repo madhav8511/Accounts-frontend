@@ -56,9 +56,19 @@ export default function Transaction() {
                 <input type="text" className="form-control" id="description" name='description' placeholder="Give description" autocomplete="off" onChange={onChange}/>
                 </div>
                 <div className="mb-3">
-                <label htmlFor="type">Type</label>
-                <input type="text" className="form-control" id="type" name='type'autocomplete="off" placeholder="credit / debit" onChange={onChange}/>
+                    <label>Type</label>
+                    <div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="radio" id="credit" name="type" value="credit" onChange={onChange} />
+                            <label className="form-check-label" htmlFor="credit">Credit~नावे </label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="radio" id="debit" name="type" value="debit" onChange={onChange} />
+                            <label className="form-check-label" htmlFor="debit">Debit~जमा</label>
+                        </div>
+                    </div>
                 </div>
+
                 <button type="submit" className="btn btn-primary" onClick={()=>addTransaction(note.amount,note.description,note.type)}>Add a Transaction</button>
             </form>
         </div>
@@ -66,8 +76,12 @@ export default function Transaction() {
         {transaction && (
                 <>
                     <h3 className='mx-3 my-3 d-flex justify-content-center align-items-center border rounded' style={{color : transaction.balance > 0 ? 'green' : 'red'}}>@--- Balance: {transaction.balance} ---@</h3>
-                    <h3 className='mx-3'>Credit: {transaction.credit}</h3>
-                    <h3 className='mx-3'>Debit: {transaction.debit}</h3>
+                    <div className='container d-flex justify-content-between align-items-center'>
+                        <h3 className='mx-3'>Credit ~ नावे : {transaction.credit}</h3>
+                        <h3 className='mx-3'>Debit ~ जमा : {transaction.debit}</h3>
+                    </div>
+
+
                     <div className='view'>
                         {Array.isArray(transaction.transactions) && transaction.transactions.map((trans) => (
                             <Transview

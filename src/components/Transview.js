@@ -4,8 +4,13 @@ import axios from 'axios'
 export default function Transview(props) {
 
     const deleteTransaction = async (id)=>{
-        const response = axios.delete(`http://localhost:8080/trans/deletetrans/${id}`)
-        console.log((await response).data);
+        if (window.confirm('Are you sure you want to delete the transaction')){
+            const response = axios.delete(`http://localhost:8080/trans/deletetrans/${id}`);
+            console.log((await response).data);
+            // Refresh the screen
+            window.location.reload();
+        }
+
     }
 
   return (
