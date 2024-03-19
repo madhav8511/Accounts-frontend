@@ -6,6 +6,7 @@ import Pilibangan from "./components/Pilibangan";
 import Transaction from "./components/Transaction";
 import Hanumangarh from "./components/Hanumangarh";
 import Ganganagar from "./components/Ganganagar";
+import Account from "./components/Account";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Navbar></Navbar>
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
+              <Route path="/accounts" element={<Account></Account>}></Route>
               <Route path="/city" element={<City></City>}></Route>
               <Route path="/pilibangan" element={<Pilibangan></Pilibangan>}></Route>
               <Route path="/hanumangarh" element={<Hanumangarh></Hanumangarh>}></Route>
