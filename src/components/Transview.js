@@ -30,7 +30,7 @@ export default function Transview(props) {
                         <div className="card-body">
                             <h5 className="card-title">Amount: {props.amount}</h5>
                             <p className="card-text">Description : {props.description}</p>
-                            <p className="card-text">Type : {props.type}</p>
+                            <p className="card-text">Type : {props.type} ~ {props.type === "credit" ? "नावे": "जमा"}</p>
                             <p className='card-text'>Date: {reversedDate}</p>
                             <button  className="btn btn-primary" onClick={()=>deleteTransaction(props.id)}>Delete</button>
                         </div>
