@@ -13,6 +13,14 @@ export default function Transview(props) {
 
     }
 
+    const formattedDate = props.date.substring(0, 10);
+
+    // Split the date into day, month, and year
+    const [year, month, day] = formattedDate.split("-");
+
+    // Reverse the order and join them back
+    const reversedDate = `${day}-${month}-${year}`;
+
   return (
     <div>
         <div className="container-fluid">
@@ -23,7 +31,7 @@ export default function Transview(props) {
                             <h5 className="card-title">Amount: {props.amount}</h5>
                             <p className="card-text">Description : {props.description}</p>
                             <p className="card-text">Type : {props.type}</p>
-                            <p className='card-text'>Date: {props.date}</p>
+                            <p className='card-text'>Date: {reversedDate}</p>
                             <button  className="btn btn-primary" onClick={()=>deleteTransaction(props.id)}>Delete</button>
                         </div>
                     </div>
