@@ -10,7 +10,6 @@ export default function Account() {
         });
         const json = await response.json();
         Setuser(json);
-        console.log(json);
     }
 
     useEffect(()=>{
