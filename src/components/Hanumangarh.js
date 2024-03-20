@@ -65,6 +65,7 @@ export default function Hanumangarh() {
                 <button type="submit" className="btn btn-primary" onClick={handleClick}>Add User</button>
             </form>
         </div>
+        <h2 className='text-center' style={{ color: '#333' }}>--- User in Hanumangarh ---</h2>
         <div className='user-list'>
         {Array.isArray(user) && user.map((person) => {
             return <User id={person._id} name={person.name} mobileno={person.mobileno} address={person.address}></User>

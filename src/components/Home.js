@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
@@ -15,10 +16,10 @@ export default function Home() {
                     <div class="col-md-4 my-2">
                         <h5>Quick Links</h5>
                         <ul class="list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/">About</a></li>
-                        <li><a href="/">Services</a></li>
-                        <li><a href="/">Contact</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/">About</Link></li>
+                        <li><Link to="/accounts">Account</Link></li>
+                        <li><Link to="/">Contact</Link></li>
                         </ul>
                     </div>
                     <div class="col-md-4 my-2">
