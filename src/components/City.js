@@ -1,49 +1,57 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import Cityview from './Cityview';
+import axios from 'axios';
 
 export default function City() {
+
+    const [city,setCity] = useState(null);
+
+    const getcity = async ()=>{
+        const response = await fetch("http://localhost:8080/city",{
+            method: 'GET'
+        });
+        const json = await response.json();
+        setCity(json);
+    }
+
+    
+    const [searchName, setSearchName] = useState('');
+
+
+    const addCity = async (name)=>{
+        try {
+            const response = await axios.post(`http://localhost:8080/city/addcity`, {
+                name
+            });
+            console.log(response.data); // Assuming response data is JSON
+        } catch (error) {
+            console.error('Error:', error.response.data); // Log error response
+        }
+    }
+
+    useEffect(()=>{
+        getcity();
+    },[])
+
   return (
     <div>
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col">
-                    <div className="card my-3">
-                        <div className="card-body">
-                            <h5 className="card-title">Pilibangan</h5>
-                            <p className="card-text">Get all accounts of pilibangan in one click</p>
-                            <Link to="/pilibangan" className="btn btn-primary">Account's</Link>
-                        </div>
+        <div className='center'>
+            <div className='container border rounded my-2'>
+                <h1>Add a City</h1>
+                <form className='container my-3'>
+                    <div className="mb-3">
+                    <label htmlFor="city">City</label>
+                    <input type="text"   className="form-control" id="city" name='city' placeholder="Enter city" autoComplete="off"  value={searchName} onChange={(e) => setSearchName(e.target.value)}/>
                     </div>
-                </div>
+                    <button type="submit" className="btn btn-primary" onClick={()=>addCity(searchName)}>Add a City</button>
+                </form>
             </div>
         </div>
-
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col">
-                    <div className="card my-3">
-                        <div className="card-body">
-                            <h5 className="card-title">Hanumangarh</h5>
-                            <p className="card-text">Get all accounts of hanumangarh in one click</p>
-                            <Link to="/hanumangarh" className="btn btn-primary">Account's</Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col">
-                    <div className="card my-3">
-                        <div className="card-body">
-                            <h5 className="card-title">Sri Ganganagar</h5>
-                            <p className="card-text">Get all accounts of ganganagar in one click</p>
-                            <Link to="/ganganagar" className="btn btn-primary">Account's</Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className='city-list'>            
+        <h3 className='mx-3 my-2 d-flex justify-content-center align-items-center'>--- Cities ---</h3>
+            {Array.isArray(city) && city.map((city) => {
+                return <Cityview id={city._id} name={city.name}></Cityview>
+            })}
         </div>
     </div>
   )

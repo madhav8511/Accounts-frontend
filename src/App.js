@@ -2,11 +2,9 @@ import City from "./components/City";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Pilibangan from "./components/Pilibangan";
 import Transaction from "./components/Transaction";
-import Hanumangarh from "./components/Hanumangarh";
-import Ganganagar from "./components/Ganganagar";
 import Account from "./components/Account";
+import Cityaccount from "./components/Cityaccount";
 
 function App() {
   return (
@@ -17,9 +15,7 @@ function App() {
               <Route path="/" element={<Home></Home>}></Route>
               <Route path="/accounts" element={<Account></Account>}></Route>
               <Route path="/city" element={<City></City>}></Route>
-              <Route path="/pilibangan" element={<Pilibangan></Pilibangan>}></Route>
-              <Route path="/hanumangarh" element={<Hanumangarh></Hanumangarh>}></Route>
-              <Route path="/ganganagar" element={<Ganganagar></Ganganagar>}></Route>
+              <Route path="/city-view" element={<Cityaccount></Cityaccount>}></Route>
               <Route path="/transaction" element={<Transaction></Transaction>}></Route>
             </Routes>
         </Router>

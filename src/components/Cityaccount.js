@@ -2,11 +2,13 @@ import React,{ useState, useEffect } from 'react'
 // import noteContext from '../context/NoteContext';
 import  User  from './User';
 import axios from 'axios';
-export default function Ganganagar() {
-    // const context = useContext(noteContext);
-    // const {addUser} = context;
-    const [user,setUser] = useState({name:"",mobileno:"",address:"Ganganagar"});
-    const [newuser,setNewuser] = useState({name:"",mobileno:"",address:"Ganganagar"});
+
+export default function Cityaccount() {
+
+    let city = localStorage.getItem("city-name");
+
+    const [user,setUser] = useState({name:"",mobileno:"",address:city});
+    const [newuser,setNewuser] = useState({name:"",mobileno:"",address:city});
 
     const addUser = async (name, mobileno, address) => {
     try {
@@ -25,7 +27,7 @@ export default function Ganganagar() {
         e.preventDefault();
         addUser(newuser.name,newuser.mobileno,newuser.address);
         setUser(user.concat(newuser));
-        setNewuser({name:"",mobileno:"",address:"Ganganagar"})
+        setNewuser({name:"",mobileno:"",address:city})
     }
 
     const onChange = (e)=>{
@@ -34,7 +36,7 @@ export default function Ganganagar() {
 
     const getUser = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/user/getbycity?address=Ganganagar`, {
+            const response = await fetch(`http://localhost:8080/user/getbycity?address=${city}`, {
                 method: 'GET'
             });
 
@@ -47,12 +49,12 @@ export default function Ganganagar() {
 
     useEffect(()=>{
         getUser();
-    },[]);
+    },[city]);
 
   return (
     <div>
         <div className='container border rounded my-2'>
-            <h1>Add a User in Ganganagar Account</h1>
+            <h1>Add a User in {city} Account</h1>
             <form className='container my-3'>
                 <div className="mb-3">
                     <label htmlFor="name">Name</label>
@@ -65,7 +67,7 @@ export default function Ganganagar() {
                 <button type="submit" className="btn btn-primary" onClick={handleClick}>Add User</button>
             </form>
         </div>
-        <h2 className='text-center' style={{ color: '#333' }}>--- User in Ganganagar ---</h2>
+        <h2 className='text-center' style={{ color: '#333' }}>--- User in {city} ---</h2>
         <div className='user-list'>
         {Array.isArray(user) && user.map((person) => {
             return <User id={person._id} name={person.name} mobileno={person.mobileno} address={person.address}></User>
