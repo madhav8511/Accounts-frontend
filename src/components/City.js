@@ -37,7 +37,7 @@ export default function City() {
     <div>
         <div className='center'>
             <div className='container border rounded my-2'>
-                <h1>Add a City</h1>
+                <h1 style={{fontFamily:'Recursive'}}>Add a City</h1>
                 <form className='container my-3'>
                     <div className="mb-3">
                     <label htmlFor="city">City</label>

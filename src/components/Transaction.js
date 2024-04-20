@@ -45,7 +45,7 @@ export default function Transaction() {
   return (
     <div className='center'>
         <div className='container border rounded my-2'>
-            <h1>Add a Transaction for {name}</h1>
+            <h1 style={{fontFamily:'Recursive'}}>Add a Transaction for {name}</h1>
             <form className='container my-3'>
                 <div className="mb-3">
                 <label htmlFor="amount">Amount</label>

@@ -54,7 +54,7 @@ export default function Cityaccount() {
   return (
     <div>
         <div className='container border rounded my-2'>
-            <h1>Add a User in {city} Account</h1>
+            <h1 style={{fontFamily:'Recursive'}}>Add a User in {city} Account</h1>
             <form className='container my-3'>
                 <div className="mb-3">
                     <label htmlFor="name">Name</label>
