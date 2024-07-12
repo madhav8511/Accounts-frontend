@@ -17,6 +17,7 @@ export default function Navbar() {
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         <Link className="nav-link" to="/city">City</Link>
                         <Link className="nav-link" to="/accounts">Account's</Link>
+                        <Link className="nav-link" to="/bills">Make Bills</Link>
                     </div>
                 </div>
             </div>
