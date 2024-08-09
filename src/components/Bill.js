@@ -14,7 +14,7 @@ function save_pdf(customer, products) {
   doc.text("Ganpati General Store", 10, 10);
   doc.setFontSize(12);
   doc.setTextColor(99, 99, 99);
-  doc.text("Ware House Raod", 10, 20);
+  doc.text("Ware House Road", 10, 20);
   doc.text("xxx, Rajasthan, 335xxx", 10, 25);
   doc.text("Phone: (+91) 9414536xxx, 9414501xxx", 10, 30);
   doc.text("GST IN: ", 10, 35);
@@ -105,45 +105,48 @@ export default function Bill() {
   return (
     <div>
       <form className="container my-3">
-        <div className="mb-3">
-          <label htmlFor="customerName">Customer Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="customerName"
-            name="name"
-            placeholder="Enter Customer Name"
-            autoComplete="off"
-            value={customer.name}
-            onChange={onChangeCustomer}
-          />
+        <div className="row">
+          <div className="mb-3 col-md-4">
+            <label htmlFor="customerName">Customer Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="customerName"
+              name="name"
+              placeholder="Enter Customer Name"
+              autoComplete="off"
+              value={customer.name}
+              onChange={onChangeCustomer}
+            />
+          </div>
+          <div className="mb-3 col-md-4">
+            <label htmlFor="mobile">Mobile Number</label>
+            <input
+              type="text"
+              className="form-control"
+              id="mobile"
+              name="mobile"
+              placeholder="Enter Mobile Number"
+              autoComplete="off"
+              value={customer.mobile}
+              onChange={onChangeCustomer}
+            />
+          </div>
+          <div className="mb-3 col-md-4">
+            <label htmlFor="customerAddress">Customer Address</label>
+            <input
+              type="text"
+              className="form-control"
+              id="customerName"
+              name="address"
+              placeholder="Enter Customer Address"
+              autoComplete="off"
+              value={customer.address}
+              onChange={onChangeCustomer}
+            />
+          </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="mobile">Mobile Number</label>
-          <input
-            type="text"
-            className="form-control"
-            id="mobile"
-            name="mobile"
-            placeholder="Enter Mobile Number"
-            autoComplete="off"
-            value={customer.mobile}
-            onChange={onChangeCustomer}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="customerAddress">Customer Address</label>
-          <input
-            type="text"
-            className="form-control"
-            id="customerName"
-            name="address"
-            placeholder="Enter Customer Address"
-            autoComplete="off"
-            value={customer.address}
-            onChange={onChangeCustomer}
-          />
-        </div>
+        
         <hr />
         <div className="mb-3">
           <label htmlFor="productName">Product Name</label>

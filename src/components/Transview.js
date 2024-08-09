@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function Transview(props) {
 
@@ -11,6 +12,10 @@ export default function Transview(props) {
             window.location.reload();
         }
 
+    }
+
+    const setdata = (id)=>{
+        localStorage.setItem("trans-token",id);
     }
 
     const formattedDate = props.date.substring(0, 10);
@@ -33,6 +38,7 @@ export default function Transview(props) {
                             <p className="card-text">Type : {props.type} ~ {props.type === "credit" ? "नावे": "जमा"}</p>
                             <p className='card-text'>Date: {reversedDate}</p>
                             <button  className="btn btn-primary" onClick={()=>deleteTransaction(props.id)}>Delete</button>
+                            <Link to="/image" className="btn btn-primary mx-2"  onClick={()=>setdata(props.id)}>View Bills</Link>
                         </div>
                     </div>
                 </div>

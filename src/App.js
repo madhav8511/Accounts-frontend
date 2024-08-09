@@ -6,6 +6,7 @@ import Transaction from "./components/Transaction";
 import Account from "./components/Account";
 import Cityaccount from "./components/Cityaccount";
 import Bill from "./components/Bill";
+import Image from "./components/Image"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/city" element={<City></City>}></Route>
               <Route path="/city-view" element={<Cityaccount></Cityaccount>}></Route>
               <Route path="/transaction" element={<Transaction></Transaction>}></Route>
+              <Route path="/image" element={<Image></Image>}></Route>
             </Routes>
         </Router>
     </>
