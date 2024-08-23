@@ -11,13 +11,13 @@ export default function Home() {
                     <div class="row">
                     <div class="col-md-4 my-2">
                         <h5>About Us</h5>
-                        <p>We are providing a basic account holding web app to make your life easy and handle account in a easier way.</p>
+                        <p>We are providing a basic account handling web app to make your life easy and handle account in a easier way.</p>
                     </div>
                     <div class="col-md-4 my-2">
                         <h5>Quick Links</h5>
                         <ul class="list-unstyled">
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/">About</Link></li>
+                        <li><Link to="/about">About</Link></li>
                         <li><Link to="/accounts">Account</Link></li>
                         <li><Link to="/">Contact</Link></li>
                         </ul>

@@ -6,7 +6,8 @@ import Transaction from "./components/Transaction";
 import Account from "./components/Account";
 import Cityaccount from "./components/Cityaccount";
 import Bill from "./components/Bill";
-import Image from "./components/Image"
+import Image from "./components/Image";
+import About from "./components/About";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Navbar></Navbar>
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
+              <Route path="/about" element={<About></About>}></Route>
               <Route path="/bills" element={<Bill></Bill>}></Route>
               <Route path="/accounts" element={<Account></Account>}></Route>
               <Route path="/city" element={<City></City>}></Route>

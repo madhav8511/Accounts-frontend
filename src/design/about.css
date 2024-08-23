@@ -1,0 +1,145 @@
+.content {
+    margin-top: 10px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.main-container{
+    margin-left: 2px;
+    width: 90%;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.text{
+    width: 600px;
+    height: 250px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    width: auto;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+}
+
+.image .image-1{
+    height: 250px;
+    width: 500px;
+    border-radius: 50%;
+    animation: rotater-image 2s ease-in 0ms 1 forwards; 
+}
+
+.text h2{
+    animation: rotater-text 2s ease-in 0ms 1 forwards; 
+}
+
+
+@keyframes rotater-image{
+    0%{
+        transform: translateX(-200px);
+        filter: blur(4px);
+    }
+    25%{
+        transform: translateX(-150px);
+        filter: blur(3px);
+    }
+    50%{
+        transform: translateX(-100px);
+        filter: blur(2px);
+    }
+    75%{
+        transform: translateX(-50px);
+        filter: blur(1px);
+    }
+    100%{
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes rotater-text{
+    0%{
+        transform: translateX(200px);
+        filter: blur(4px);
+    }
+    25%{
+        transform: translateX(150px);
+        filter: blur(3px);
+    }
+    50%{
+        transform: translateX(100px);
+        filter: blur(2px);
+    }
+    75%{
+        transform: translateX(50px);
+        filter: blur(1px);
+    }
+    100%{
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@media (max-width: 800px) {
+
+    .main-container{
+        width: 100vw;
+        height: 800px;
+        flex-direction: column;
+        flex-grow: initial;
+        flex-wrap: wrap-reverse;
+    }
+
+    .text{
+        width: 400px;
+        height: 200px;
+    }
+
+    .image{
+        width: 400px;
+        height: 200px;
+    }
+
+    .image .image-1{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .main-container{
+        width: 100vw;
+        height: 500px;
+        flex-direction: column;
+        flex-grow: initial;
+        flex-wrap: wrap-reverse;
+    }
+
+    .text{
+        width: 90%;
+        font-size: 15px;
+        margin-left: 10px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+
+    .image{
+        width: 90%;
+    }
+}
