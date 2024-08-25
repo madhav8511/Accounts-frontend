@@ -1,6 +1,94 @@
 import React, { useEffect, useState } from 'react';
 import Transview from './Transview';
 import axios from 'axios';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+function set_date(date)
+{
+    const formattedDate = date.substring(0, 10);
+
+    // Split the date into day, month, and year
+    const [year, month, day] = formattedDate.split("-");
+
+    // Reverse the order and join them back
+    const reversedDate = `${day}-${month}-${year}`;
+
+    return reversedDate;
+}
+
+function save_pdf(name,transactions,balance) {
+    const pdf = new jsPDF();
+
+    pdf.setProperties({
+        title: "Balance Report"
+    });
+
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Ganapati General Store', 5, 9);
+    pdf.setFontSize(15);
+    pdf.text('Accounting Software',150,6);
+    pdf.text('Balance Report', 150, 12);
+
+    pdf.setLineWidth(1);
+    pdf.line(0, 14, 260, 14);
+
+    pdf.text(`To: ${name}`,5,23)
+    pdf.text(`BALANCE: ${balance}`,5,30)
+    pdf.setFont('helvetica', 'normal');
+    pdf.setFontSize(10);
+    pdf.text('This is a system-generated report, so in the case ',130,22);
+    pdf.text('of any issue, neither the company nor we are ',130,26);
+    pdf.text('responsibe.',130,30)
+
+    pdf.line(0,35,260,35)
+
+    // Define the headers and the data for the table
+    const headers = [['Sr No', 'Date', 'Description', 'Type', 'Amount']];
+    const tableData = transactions.transactions.map((item, index) => [
+        index + 1,
+        set_date(item.date),
+        item.description,
+        item.type,
+        item.amount
+    ]);
+
+    // Add the table to the PDF
+    pdf.autoTable({
+        head: headers,
+        body: tableData,
+        startY: 50,  // Y position where the table will start
+        theme: 'grid',
+        styles: {
+          fontSize: 10,
+          cellPadding: 3,
+          textColor: [0, 0, 0],
+          lineColor: [0, 0, 0],
+          lineWidth: 0.1,
+      },
+      headStyles: {
+          fillColor: [200, 200, 200],
+          textColor: [0, 0, 0],
+          fontSize: 12,
+      },
+      bodyStyles: {
+          fillColor: [255, 255, 255],
+          textColor: [0, 0, 0],
+          fontSize: 10,
+      },
+      columnStyles: {
+          0: { cellWidth: 30 },
+          1: { cellWidth: 30 },
+          2: { cellWidth: 80 },
+          3: { cellWidth: 20 },
+          4: { cellWidth: 30 },
+      },
+      margin: { top: 20, right: 10, bottom: 10, left: 10 },
+      showHead: 'everyPage'
+    });
+
+    pdf.save('balance_report.pdf');
+}
 
 export default function Transaction() {
     const [transaction, setTransaction] = useState(null);
@@ -111,16 +199,17 @@ export default function Transaction() {
                             onChange={onFileChange} 
                             className="mb-2" // Added margin-bottom to create space between the input and the button
                         />
-                        <button 
-                            type="submit" 
-                            className="btn btn-primary my-2"
-                        >
+                        <button type="submit" className="btn btn-primary my-2">
                             Add a Transaction
                         </button>
                     </div>
                 </form>
             </div>
-            <h3 className='mx-3 my-2 d-flex justify-content-center align-items-center'>--- Transaction's for : {name} ---</h3>
+            <h3 className='mx-3 my-2 d-flex justify-content-center align-items-center'>-- Transaction's for : {name} --</h3>
+            <div className=' d-flex justify-content-center align-items-center'>
+            <button onClick={()=>save_pdf(name,transaction,transaction.balance)} className="btn btn-primary my-2">Generate Balance Report</button>
+            </div>
+            
             {transaction && (
                 <>
                     <h3 className='mx-3 my-3 d-flex justify-content-center align-items-center border rounded' style={{ color: transaction.balance > 0 ? 'green' : 'red' }}>@--- Balance: {transaction.balance} ---@</h3>

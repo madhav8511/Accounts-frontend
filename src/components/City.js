@@ -49,8 +49,8 @@ export default function City() {
         </div>
         <div className='city-list'>            
         <h3 className='mx-3 my-2 d-flex justify-content-center align-items-center'>--- Cities ---</h3>
-            {Array.isArray(city) && city.map((city) => {
-                return <Cityview id={city._id} name={city.name}></Cityview>
+            {Array.isArray(city) && city.map((city,index) => {
+                return <Cityview key={index} id={city._id} name={city.name}></Cityview>
             })}
         </div>
     </div>

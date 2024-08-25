@@ -69,8 +69,8 @@ export default function Cityaccount() {
         </div>
         <h2 className='text-center' style={{ color: '#333' }}>--- User in {city} ---</h2>
         <div className='user-list'>
-        {Array.isArray(user) && user.map((person) => {
-            return <User id={person._id} name={person.name} mobileno={person.mobileno} address={person.address}></User>
+        {Array.isArray(user) && user.map((person,index) => {
+            return <User id={person._id} key={index} name={person.name} mobileno={person.mobileno} address={person.address}></User>
         })}
         </div>
     </div>

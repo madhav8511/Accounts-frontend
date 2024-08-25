@@ -98,7 +98,7 @@
 
     .main-container{
         width: 100vw;
-        height: 800px;
+        height: 600px;
         flex-direction: column;
         flex-grow: initial;
         flex-wrap: wrap-reverse;
