@@ -77,9 +77,9 @@ function save_pdf(name,transactions,balance) {
           fontSize: 10,
       },
       columnStyles: {
-          0: { cellWidth: 30 },
+          0: { cellWidth: 20 },
           1: { cellWidth: 30 },
-          2: { cellWidth: 80 },
+          2: { cellWidth: 90 },
           3: { cellWidth: 20 },
           4: { cellWidth: 30 },
       },
