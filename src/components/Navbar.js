@@ -18,7 +18,7 @@ export default function Navbar() {
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         <Link className="nav-link mx-1" to="/city">City</Link>
                         <Link className="nav-link mx-1" to="/accounts">Account's</Link>
-                        <Link className="nav-link mx-1" to="/bills">Make Bills</Link>
+                        <Link className="nav-link mx-1" to="/bills">Generate Invoices</Link>
                         <Link className="nav-link mx-1" to="/about">About-Us</Link>
                     </div>
                 </div>

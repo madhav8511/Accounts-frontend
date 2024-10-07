@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Home() {
+    localStorage.clear();
   return (
     <div>
        <img src='https://cdn.corporatefinanceinstitute.com/assets/drawaing-account.jpeg' alt='home-pic' className='img-fluid' style={{width: 1535, height:628}} />
