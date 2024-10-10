@@ -4,6 +4,7 @@ import axios from 'axios';
 export default function Billview(props) {
 
   const [showModal, setShowModal] = useState(false);
+  const [name,setName] = useState(props.name);
   const [price, setPrice] = useState(props.price);
   const [quantity, setQuantity] = useState(props.quantity);
 
@@ -15,8 +16,8 @@ export default function Billview(props) {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put('http://localhost:8080/bill/updateproduct', {
-        name: props.name,
+      const response = await axios.put(`http://localhost:8080/bill/updateproduct/${props.id}`, {
+        name,
         price,
         quantity,
       });
@@ -81,7 +82,13 @@ export default function Billview(props) {
                 <form onSubmit={handleUpdateSubmit}>
                   <div className="mb-3">
                     <label className="form-label">Item-Name</label>
-                    <input type="text" className="form-control" value={props.name} disabled/>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Price</label>
