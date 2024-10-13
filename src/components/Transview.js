@@ -13,10 +13,32 @@ export default function Transview(props) {
 
     const deleteTransaction = async (id)=>{
         if (window.confirm('Are you sure you want to delete the transaction')){
-            const response = axios.delete(`http://localhost:8080/trans/deletetrans/${id}`);
-            console.log((await response).data);
-            // Refresh the screen
+
+          try {
+            const imageUrls = props.images;
+            // console.log(imageUrls);
+
+            const response = await axios.delete(`http://localhost:8080/trans/deletetrans/${id}`);
+            console.log('Transaction deleted:', response.data);
+
             window.location.reload();
+          
+            // // Check if imageUrls is defined and not empty
+            if (imageUrls && imageUrls.length > 0) {
+              const response_1 = await axios.delete('http://localhost:8080/uploads/deleteimage', {
+                data: { imageUrls },
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              });
+              console.log('Images deleted:', response_1.data);
+            }
+          
+            // Proceed to delete the transaction even if there are no images or image deletion succeeds
+            
+          } catch (error) {
+            console.error('Error occurred:', error);
+          }
         }
 
     }
@@ -67,8 +89,8 @@ export default function Transview(props) {
                             <p className="card-text">Type : {props.type} ~ {props.type === "credit" ? "नावे": "जमा"}</p>
                             <p className='card-text'>Date: {reversedDate}</p>
                             <button  className="btn btn-primary" onClick={()=>setShowModal(true)}>Update</button>
-                            <button  className="btn btn-primary mx-2" onClick={()=>deleteTransaction(props.id)}>Delete</button>
-                            <Link to="/image" className="btn btn-primary"  onClick={()=>setdata(props.id)}>View Bills</Link>
+                            <Link to="/image" className="btn btn-primary mx-2"  onClick={()=>setdata(props.id)}>View Bills</Link>
+                            <button  className="btn btn-primary" onClick={()=>deleteTransaction(props.id)}>Delete</button>
                         </div>
                     </div>
                 </div>

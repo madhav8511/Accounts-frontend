@@ -45,31 +45,35 @@ export default function Billview(props) {
   return (
     <div>
        <div className="container-fluid">
-          <div className="row">
-              <div className="col">
-                  <div className="card my-2">
-                      <div className="card-body d-flex justify-content-between align-items-center">
-                      <div className="d-flex justify-content-between align-items-center" style={{ gap: '200px' }}>
-                        <div className="flex-fill text-center" style={{ minWidth: '300px' }}>
-                          <p className="fw-bold">Item-Name</p> {props.name}
-                        </div>
-                        <div className="flex-fill text-center" style={{ minWidth: '100px' }}>
-                          <p className="fw-bold">Quantity</p> {props.quantity}
-                        </div>
-                        <div className="flex-fill text-center" style={{ minWidth: '100px' }}>
-                          <p className="fw-bold">Price</p> {props.price}
-                        </div>
-                      </div>
-
-                          <div>
-                              <button className="btn btn-primary" onClick={handleUpdateClick}>Update</button>
-                              <button className="btn btn-primary mx-2 my-1" onClick={() => deleteproduct(props.id)}>Delete</button>
-                          </div>
-                      </div>
+        <div className="row">
+          <div className="col">
+            <div className="card my-2">
+              <div className="card-body d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div className="d-flex flex-column flex-md-row justify-content-between align-items-center w-100" style={{ gap: '20px' }}>
+                  <div className="text-center" style={{ minWidth: '150px', flex: '1' }}>
+                    <p className="fw-bold">Item-Name</p>
+                    {props.name}
                   </div>
+                  <div className="text-center" style={{ minWidth: '100px', flex: '1' }}>
+                    <p className="fw-bold">Quantity</p>
+                    {props.quantity}
+                  </div>
+                  <div className="text-center" style={{ minWidth: '100px', flex: '1' }}>
+                    <p className="fw-bold">Price</p>
+                    {props.price}
+                  </div>
+                </div>
+
+                <div className="mt-3 mt-md-0 d-flex w-10 justify-content-md-end" style={{ gap: '10px' }}>
+                  <button className="btn btn-primary flex-fill" onClick={handleUpdateClick}>Update</button>
+                  <button className="btn btn-primary flex-fill" onClick={() => deleteproduct(props.id)}>Delete</button>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
+
       {showModal && (
         <div className="modal d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
           <div className="modal-dialog">

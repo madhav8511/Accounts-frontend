@@ -227,6 +227,7 @@ export default function Transaction() {
                                 description={trans.description}
                                 type={trans.type}
                                 date={trans.date}
+                                images={trans.images}
                             />
                         ))}
                     </div>

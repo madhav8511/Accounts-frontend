@@ -285,8 +285,7 @@ export default function Bill() {
                     />
                   </div>
 
-                  {/* Buttons */}
-                  <div className="d-flex">
+                  <div className="d-flex mt-3">
                     <button
                       type="submit"
                       className="btn btn-primary me-3"
