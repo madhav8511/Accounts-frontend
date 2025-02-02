@@ -86,7 +86,7 @@ export default function Transview(props) {
                         <div className="card-body">
                             <h5 className="card-title">Amount: {props.amount}</h5>
                             <p className="card-text">Description : {props.description}</p>
-                            <p className="card-text">Type : {props.type} ~ {props.type === "credit" ? "नावे": "जमा"}</p>
+                            <p className="card-text">Type : {props.type} ~ {props.type === "debit" ? "नावे": "जमा"}</p>
                             <p className='card-text'>Date: {reversedDate}</p>
                             <button  className="btn btn-primary" onClick={()=>setShowModal(true)}>Update</button>
                             <Link to="/image" className="btn btn-primary mx-2"  onClick={()=>setdata(props.id)}>View Bills</Link>
@@ -130,12 +130,12 @@ export default function Transview(props) {
                         <div className="form-check form-check-inline">
                             <input className="form-check-input" type="radio" id="credit" name="type" value="credit" checked={type === "credit"} onChange={handleRadioChange}
                             />
-                            <label className="form-check-label" htmlFor="credit">Credit ~ नावे</label>
+                            <label className="form-check-label" htmlFor="credit">Credit ~ जमा</label>
                         </div>
                         <div className="form-check form-check-inline">
                             <input className="form-check-input" type="radio" id="debit" name="type" value="debit" checked={type === "debit"} onChange={handleRadioChange}
                             />
-                            <label className="form-check-label" htmlFor="debit">Debit ~ जमा</label>
+                            <label className="form-check-label" htmlFor="debit">Debit ~ नावे</label>
                         </div>
                     </div>
                     <div className="mb-3">

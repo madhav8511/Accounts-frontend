@@ -182,12 +182,12 @@ export default function Transaction() {
                         <label>Type</label>
                         <div>
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" id="credit" name="type" value="credit" onChange={onChange} />
-                                <label className="form-check-label" htmlFor="credit">Credit~नावे </label>
+                                <input className="form-check-input" type="radio" id="debit" name="type" value="debit" onChange={onChange} />
+                                <label className="form-check-label" htmlFor="debit">Debit~नावे </label>
                             </div>
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" id="debit" name="type" value="debit" onChange={onChange} />
-                                <label className="form-check-label" htmlFor="debit">Debit~जमा</label>
+                                <input className="form-check-input" type="radio" id="credit" name="type" value="credit" onChange={onChange} />
+                                <label className="form-check-label" htmlFor="credit">Credit~जमा</label>
                             </div>
                         </div>
                     </div>
@@ -214,8 +214,8 @@ export default function Transaction() {
                 <>
                     <h3 className='mx-3 my-3 d-flex justify-content-center align-items-center border rounded' style={{ color: transaction.balance > 0 ? 'green' : 'red' }}>@--- Balance: {transaction.balance} ---@</h3>
                     <div className='container d-flex justify-content-between align-items-center'>
-                        <h3 className='mx-3'>Credit ~ नावे : {transaction.credit}</h3>
-                        <h3 className='mx-3'>Debit ~ जमा : {transaction.debit}</h3>
+                        <h3 className='mx-3'>Debit ~ नावे : {transaction.debit}</h3>
+                        <h3 className='mx-3'>Credit ~ जमा : {transaction.credit}</h3>
                     </div>
 
                     <div className='view'>
