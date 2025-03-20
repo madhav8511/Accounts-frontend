@@ -21,6 +21,7 @@ const User = (props)=> {
         const response = await axios.get(`http://localhost:8080/user/verifyUser?mobileno=${mobileno}`);
         localStorage.setItem("token",response.data);
         localStorage.setItem("name",name);
+        localStorage.setItem("mob",mobileno);
     }
     
 

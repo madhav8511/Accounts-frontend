@@ -94,6 +94,7 @@ export default function Transaction() {
     const [transaction, setTransaction] = useState(null);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const name = localStorage.getItem('name');
+    const phonenum = localStorage.getItem('mob');
 
     const getTransaction = async () => {
         const response = await fetch('http://localhost:8080/trans/getbyUser', {
@@ -107,6 +108,23 @@ export default function Transaction() {
         const json = await response.json();
         setTransaction(json);
     }
+
+    const message = async (to, amount) => {
+        // Ensure the phone number starts with "+91"
+        const formattedTo = to.startsWith("+") ? to : `+91${to}`;
+    
+        const response = await fetch('http://localhost:8080/sms/send-sms', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ to: formattedTo, amount })
+        });
+    
+        const data = await response.json();
+        console.log(data);
+    };
+    
 
     const addTransaction = async (amount, description, type) => {
         try {
@@ -207,7 +225,8 @@ export default function Transaction() {
             </div>
             <h3 className='mx-3 my-2 d-flex justify-content-center align-items-center'>-- Transaction's for : {name} --</h3>
             <div className=' d-flex justify-content-center align-items-center'>
-            <button onClick={()=>save_pdf(name,transaction,transaction.balance)} className="btn btn-primary my-2">Generate Balance Report</button>
+            <button onClick={()=>save_pdf(name,transaction,transaction.balance)} className="btn btn-primary my-2 mx-2">Generate Balance Report</button>
+            <button onClick={()=>message(phonenum,transaction.balance)} className="btn btn-primary my-2">Remainder SMS</button>
             </div>
             
             {transaction && (
